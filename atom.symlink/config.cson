@@ -37,12 +37,19 @@
       "tmp"
       "vendor"
     ]
+    projectHome: "/Users/ajenkins/Dropbox/Code"
     telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "pure-syntax"
+    ]
   editor:
     fontFamily: "Menlo"
-    fontSize: 15
+    fontSize: 12
     invisibles: {}
+    scrollPastEnd: true
     showIndentGuide: true
+    showInvisibles: true
     softWrapAtPreferredLineLength: true
   "go-plus":
     panelDisplayMode: "closed"
