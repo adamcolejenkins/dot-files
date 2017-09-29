@@ -5,17 +5,29 @@
         protocol = https
 [alias]
         co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributors = !$ZSH/bin/git-rank-contributors
-        count   = !git shortlog -sn
+        promote = !$DOT/bin/git-promote
+        wtf     = !$DOT/bin/git-wtf
+        rank-contributors = !$DOT/bin/git-rank-contributors
+	count   = !git shortlog -sn
+	amend   = commit --amend
+	co 	= checkout
+	dc = diff --cached
+	dump = cat-file -p
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	loc = !git diff --stat `git hash-object -t tree /dev/null` | tail -1 | cut -d' ' -f5
+	rename = branch -m
+	st = status -sb
+	sum = log --oneline --no-merges
+	type = cat-file -t
+	unstage = reset HEAD
 [color]
         diff = auto
         status = auto
         branch = auto
         ui = true
 [core]
-        excludesfile = ~/.gitignore
+	excludesfile = /Users/ajenkins/.gitignore
         editor = vim
 [apply]
         whitespace = nowarn
@@ -31,3 +43,15 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = Adam Jenkins
+	email = ajenkins@aislerocket.com
+[commit]
+	template = /Users/ajenkins/.stCommitMsg
+	gpgsign = true
